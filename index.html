@@ -24,14 +24,10 @@
         
         
         function playClick() {
-            const promise = document.querySelector('audio').play();
-            if (promise !== undefined) {
-                promise.then(_ => {
-
-                }).catch(error => {
-
-                });
-            };
+            const audio = document.querySelector('audio');
+            if(!audio) return;
+            audio.currentTime = 0; 
+            audio.play();
         };
 
         const secondHand = document.querySelector('.second-hand');
