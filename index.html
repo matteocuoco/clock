@@ -17,18 +17,10 @@
         </div>
     </div>
 
-    <audio src="click.mp3"></audio>
+    <audio id="click" src="click.mp3"></audio>
 
     <!-- Javascript -->
     <script>
-        
-        
-        function playClick() {
-            const audio = document.querySelector('audio');
-            if(!audio) return;
-            audio.currentTime = 0; 
-            audio.play();
-        };
 
         const secondHand = document.querySelector('.second-hand');
         const minHand = document.querySelector('.min-hand');
@@ -48,10 +40,18 @@
             const hour = now.getHours();
             const hourDegrees = hour*360/12 + 90;
             hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+            
+            const audio = document.getElementById('click');
+            audio.currentTime = 0;
+            const promise = audio.play();
+            if ( promise !== null ) {
+                promise.catch( () => {
+                    promise;
+                });
+            };
         }
 
         setInterval(setDate, 1000);
-        setInterval(playClick, 1000);
 
     </script>
 
