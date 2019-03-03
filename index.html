@@ -22,15 +22,18 @@
     <!-- Javascript -->
     <script>
         
-        const promise = document.querySelector('audio').play();
-        if (promise !== undefined) {
-            promise.then(_ => {
-
-            }).catch(error => {
-
-            });
-        };
         
+        function playClick() {
+            const promise = document.querySelector('audio').play();
+            if (promise !== undefined) {
+                promise.then(_ => {
+
+                }).catch(error => {
+
+                });
+            };
+        };
+
         const secondHand = document.querySelector('.second-hand');
         const minHand = document.querySelector('.min-hand');
         const hourHand = document.querySelector('.hour-hand');
@@ -52,7 +55,8 @@
         }
 
         setInterval(setDate, 1000);
-        
+        setInterval(playClick, 1000);
+
     </script>
 
 </body>
